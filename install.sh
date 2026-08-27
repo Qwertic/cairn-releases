@@ -35,7 +35,12 @@ tmp=$(mktemp -d)
 # worse than no binary.
 trap 'rm -rf "$tmp"' EXIT INT TERM
 
-printf 'Downloading %s…\n' "$asset"
+# Name the source. CAIRN_BASE_URL and CAIRN_REPO exist so the tests can point
+# at a local fixture, which means the download source is no longer a
+# compile-time constant: either variable already present in the environment
+# silently redirects a real install, and the checksum cannot catch it because
+# checksums.txt comes from the same base. Printing it makes a redirect visible.
+printf 'Downloading %s from %s…\n' "$asset" "$base"
 curl -fsSL "$base/$asset" -o "$tmp/cairn" || die "Download failed: $base/$asset"
 curl -fsSL "$base/checksums.txt" -o "$tmp/checksums.txt" || die "Could not fetch checksums.txt"
 
