@@ -56,12 +56,13 @@ mv "$tmp/cairn" "$INSTALL_DIR/cairn"
 
 printf 'Installed cairn to %s\n' "$INSTALL_DIR/cairn"
 
+# The $PATH in the printf below is deliberately literal: it prints the line for
+# the user to paste into their shell config, and expanding it would splice their
+# whole current PATH into the suggestion. SC2016 flags that, and the suppression
+# must sit in front of the entire case statement rather than a single branch.
+# shellcheck disable=SC2016
 case ":$PATH:" in
   *":$INSTALL_DIR:"*) ;;
-  # SC2016 is correct that $PATH does not expand here, and that is the point:
-  # this prints the literal line for the user to paste into their shell config.
-  # Expanding it would splice their entire current PATH into the suggestion.
-  # shellcheck disable=SC2016
   *) printf '\n%s is not on your PATH. Add it:\n\n    export PATH="%s:$PATH"\n\n' \
        "$INSTALL_DIR" "$INSTALL_DIR" ;;
 esac
