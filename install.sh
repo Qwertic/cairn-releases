@@ -58,6 +58,10 @@ printf 'Installed cairn to %s\n' "$INSTALL_DIR/cairn"
 
 case ":$PATH:" in
   *":$INSTALL_DIR:"*) ;;
+  # SC2016 is correct that $PATH does not expand here, and that is the point:
+  # this prints the literal line for the user to paste into their shell config.
+  # Expanding it would splice their entire current PATH into the suggestion.
+  # shellcheck disable=SC2016
   *) printf '\n%s is not on your PATH. Add it:\n\n    export PATH="%s:$PATH"\n\n' \
        "$INSTALL_DIR" "$INSTALL_DIR" ;;
 esac
