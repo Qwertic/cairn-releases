@@ -72,4 +72,4 @@ case ":$PATH:" in
        "$INSTALL_DIR" "$INSTALL_DIR" ;;
 esac
 
-printf 'Next: cairn init\n'
+printf 'Next: cairn login, then cairn init\n'
