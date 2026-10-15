@@ -2,7 +2,7 @@
 # cairn installer. POSIX sh on purpose — it runs before anything is installed.
 set -eu
 
-REPO="${CAIRN_REPO:-Qwertic/cairn-releases}"
+REPO="${CAIRN_REPO:-cairn-kb/cairn}"
 INSTALL_DIR="${CAIRN_INSTALL_DIR:-$HOME/.local/bin}"
 VERSION="${CAIRN_VERSION:-latest}"
 # Where the assets are fetched from. Overridable so the test suite can point it
@@ -72,4 +72,4 @@ case ":$PATH:" in
        "$INSTALL_DIR" "$INSTALL_DIR" ;;
 esac
 
-printf 'Next: cairn login, then cairn init\n'
+printf 'Next: cairn init   (local needs no account; see the README for team spaces)\n'

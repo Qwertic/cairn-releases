@@ -1,3 +1,8 @@
+> **cairn is now open source at [cairn-kb/cairn](https://github.com/cairn-kb/cairn).**
+> New releases are published there. Install with
+> `curl -fsSL https://raw.githubusercontent.com/cairn-kb/cairn/main/install.sh | sh`.
+> The install line from this repository keeps working and now installs from cairn-kb/cairn too.
+
 # cairn
 
 **Shared team knowledge for AI agents — they propose what they learn, a human
